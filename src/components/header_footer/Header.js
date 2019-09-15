@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Container } from '@material-ui/core';
+import { AppBar, Toolbar, Container, Link } from '@material-ui/core';
+import { Link as LinkRouter } from 'react-router-dom';
+
 import RegisterLinks from './RegisterLinks';
 import LoginLinks from './LoginLinks';
 
 const Header = () => {
-  const [auth, setAuth] = useState(true);
+  const [auth] = useState(true);
   return (
     <AppBar position='static'>
       <Container>
         <Toolbar>
-          <Typography variant='h6'>BlogApp</Typography>
+          <Link
+            to='/'
+            component={LinkRouter}
+            variant='h6'
+            color='inherit'
+            underline='none'
+          >
+            BlogApp
+          </Link>
           {auth ? <LoginLinks /> : <RegisterLinks />}
         </Toolbar>
       </Container>
