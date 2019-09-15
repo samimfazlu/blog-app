@@ -1,17 +1,19 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, withStyles } from '@material-ui/core';
 
 import { Posts } from '../posts';
+import { styles } from './style';
 
-const DashBoard = props => {
-  const { postsData } = props;
-
+const DashBoard = ({ postsData, classes }) => {
   return (
     <>
-      <Typography variant='h6'>DashBoard</Typography>
+      <Typography variant='h5' component='h2' className={classes.h2}>
+        Posts
+      </Typography>
+      <hr />
       <Posts postsData={postsData} />
     </>
   );
 };
 
-export default DashBoard;
+export default withStyles(styles)(DashBoard);

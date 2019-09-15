@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link as RouterLink } from 'react-router-dom';
-import { Typography, Button, withStyles } from '@material-ui/core';
+import { Typography, Button, withStyles, Box } from '@material-ui/core';
 
 import { parseTextToHtml } from '../../utils';
 
@@ -8,6 +8,13 @@ const styles = {
   root: {
     display: 'flex',
     flexDirection: 'Column'
+  },
+  title: {
+    marginBottom: '16px'
+  },
+  btnGroup: {
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 };
 
@@ -33,7 +40,7 @@ const PostDetails = ({
 
   return (
     <>
-      <Typography variant='h5' component='h3'>
+      <Typography variant='h5' component='h3' className={classes.title}>
         {findPost.title}
       </Typography>
       <img src={`/img/${findPost.url}`} alt='Pic' />
@@ -45,26 +52,29 @@ const PostDetails = ({
         variant='caption'
         display='block'
         style={{ fontStyle: 'italic' }}
+        align='right'
       >
         Written By Samim on 23rd June
       </Typography>
       <br />
-      <Button
-        variant='contained'
-        color='primary'
-        component={RouterLink}
-        onClick={() => handleEditPost(id)}
-        to={`/edit/${findPost.id}`}
-      >
-        Edit
-      </Button>
-      <Button
-        onClick={e => handleDeletePost(findPost.id)}
-        variant='contained'
-        color='primary'
-      >
-        Delete
-      </Button>
+      <Box className={classes.btnGroup}>
+        <Button
+          variant='contained'
+          color='primary'
+          component={RouterLink}
+          onClick={() => handleEditPost(id)}
+          to={`/edit/${findPost.id}`}
+        >
+          Edit
+        </Button>
+        <Button
+          onClick={e => handleDeletePost(findPost.id)}
+          variant='contained'
+          color='primary'
+        >
+          Delete
+        </Button>
+      </Box>
     </>
   );
 };

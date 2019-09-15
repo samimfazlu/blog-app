@@ -22,6 +22,10 @@ const styles = {
   },
   heading: {
     margin: '30px 0'
+  },
+  select: {
+    margin: '30px 0',
+    minWidth: '150px'
   }
 };
 
@@ -37,18 +41,7 @@ const MenuProps = {
   }
 };
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder'
-];
+const names = ['Blog', 'Travel', 'Foreign Affairs', 'Marketing', 'programming'];
 
 const PostForm = ({
   classes,
@@ -119,6 +112,7 @@ const PostForm = ({
         tags: tagName
       };
       updatePost(updatedPost);
+      localStorage.removeItem('content');
     } else {
       const post = {
         id: 321,
@@ -127,6 +121,7 @@ const PostForm = ({
         tags: tagName
       };
       addPost(post);
+      localStorage.removeItem('content');
     }
     console.log(tagName);
     history.push('/');
@@ -150,10 +145,11 @@ const PostForm = ({
         displayEmpty
         onChange={handleTagChange}
         value={tagName}
+        className={classes.select}
         input={<Input id='select-multiple-checkbox' />}
         renderValue={selected => {
           if (selected && selected.length === 0) {
-            return <em>Placeholder</em>;
+            return <em>Select Tag</em>;
           } else {
             return selected.join(', ');
           }

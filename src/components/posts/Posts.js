@@ -1,14 +1,19 @@
 import React from 'react';
-import { Paper } from '@material-ui/core';
+import { Paper, withStyles } from '@material-ui/core';
 
 import PostSummary from './PostSummary';
 
-const Posts = props => {
-  const { postsData, deletePost } = props;
+const styles = {
+  paper: {
+    padding: '10px',
+    margin: '10px 0'
+  }
+};
+const Posts = ({ postsData, deletePost, classes }) => {
   return (
     <>
       {postsData.map(post => (
-        <Paper elevation={4} key={post.id}>
+        <Paper elevation={4} className={classes.paper} key={post.id}>
           <PostSummary post={post} deletePost={deletePost} />
         </Paper>
       ))}
@@ -16,4 +21,4 @@ const Posts = props => {
   );
 };
 
-export default Posts;
+export default withStyles(styles)(Posts);

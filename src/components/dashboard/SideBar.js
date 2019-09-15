@@ -1,8 +1,18 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, withStyles } from '@material-ui/core';
+import { spacing } from '@material-ui/system';
 
-const SideBar = () => {
-  return <Typography variant='h6'>SideBar</Typography>;
+import { styles } from './style';
+
+const SideBar = ({ classes }) => {
+  return (
+    <>
+      <Typography variant='h5' component='h2' className={classes.h2}>
+        SideBar
+      </Typography>
+      <hr />
+    </>
+  );
 };
 
-export default SideBar;
+export default withStyles(styles)(SideBar);

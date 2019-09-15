@@ -11,7 +11,8 @@ const styles = {
   },
   button: {
     maxWidth: '300px',
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-end',
+    marginTop: '10px'
   }
 };
 
